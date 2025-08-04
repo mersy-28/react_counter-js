@@ -15,11 +15,9 @@ function App() {
 
   const increase = () => {
     setCount(c => {
-      const afterOne = c + 1;
-      // if the new value is divisible by 5, add 100 more
-      return afterOne % 5 === 0
-        ? afterOne + 100
-        : afterOne;
+      const base = c + 1;
+      // if previous count (before adding 1) was divisible by 5, add 100 more
+      return c % 5 === 0 ? base + 100 : base;
     });
   };
 
