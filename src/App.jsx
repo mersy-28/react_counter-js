@@ -1,41 +1,57 @@
-import { useState } from 'react';
+// src/App.jsx
+import React, { useState } from 'react';
 import './App.scss';
 
-export const App = () => {
-  const [count] = useState(0);
+function App() {
+  const [count, setCount] = useState(0);
 
   const addOne = () => {
-    // write code here
+    setCount(c => c + 1);
   };
 
   const add100 = () => {
-    // write code here
+    setCount(c => c + 100);
   };
 
-  // DON'T change the code below
   const increase = () => {
-    if (count % 5 === 0) {
-      add100();
-    }
-
-    addOne();
+    setCount(c => {
+      const base = c + 1;
+      // if previous count (before adding 1) was divisible by 5, add 100 more
+      return c % 5 === 0 ? base + 100 : base;
+    });
   };
 
   return (
     <div className="App">
-      <h1 className="App__title">{`Count: ${count}`}</h1>
+      <h1 className="App__title">Count: {count}</h1>
 
-      <button type="button" className="App__add-one" onClick={addOne}>
-        Add 1
-      </button>
+      <div className="App__buttons">
+        <button
+          type="button"
+          className="App__add-one"
+          onClick={addOne}
+        >
+          Add 1
+        </button>
 
-      <button type="button" className="App__add-100" onClick={add100}>
-        Add 100
-      </button>
+        <button
+          type="button"
+          className="App__add-100"
+          onClick={add100}
+        >
+          Add 100
+        </button>
 
-      <button type="button" className="App__increase" onClick={increase}>
-        Increase
-      </button>
+        <button
+          type="button"
+          className="App__increase"
+          onClick={increase}
+        >
+          Increase
+        </button>
+      </div>
     </div>
   );
-};
+}
+
+export default App;
