@@ -15,9 +15,10 @@ function App() {
 
   const increase = () => {
     setCount(c => {
-      const base = c + 1;
-      // if previous count (before adding 1) was divisible by 5, add 100 more
-      return c % 5 === 0 ? base + 100 : base;
+      const afterOne = c + 1;
+
+      // if the old count (c) was a multiple of 5, add 100 on top of the +1
+      return c % 5 === 0 ? afterOne + 100 : afterOne;
     });
   };
 
@@ -26,27 +27,15 @@ function App() {
       <h1 className="App__title">Count: {count}</h1>
 
       <div className="App__buttons">
-        <button
-          type="button"
-          className="App__add-one"
-          onClick={addOne}
-        >
+        <button type="button" className="App__add-one" onClick={addOne}>
           Add 1
         </button>
 
-        <button
-          type="button"
-          className="App__add-100"
-          onClick={add100}
-        >
+        <button type="button" className="App__add-100" onClick={add100}>
           Add 100
         </button>
 
-        <button
-          type="button"
-          className="App__increase"
-          onClick={increase}
-        >
+        <button type="button" className="App__increase" onClick={increase}>
           Increase
         </button>
       </div>
